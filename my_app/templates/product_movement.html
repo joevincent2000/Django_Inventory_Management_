@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+
+<div class="button-group">
+    <a href="{% url 'product_movement' %}" class="btn btn-primary btn-md" role="button">Product Movement</a>
+    <a href="{% url 'add_product_movement' %}" class="btn btn-primary btn-md" role="button">Add</a>
+
+</div>
+<br>
+<h4>Currently Viewing {{ header }}</h4>
+<table class="table table-hover">
+<thead>
+    <tr>
+        <th>ID</th>
+        <th>Timestamp</th>
+        <th>Product</th>
+        <th>From Location</th>
+        <th>To Location</th>
+        <th>Qty</th>
+        <th>Actions</th>
+    </tr>
+</thead>
+<tbody>
+    {% for item in items %}
+<tr>
+    <td>{{ item.movement_id }}</td>
+    <td>{{ item.timestamp }}</td>
+    <td>{{ item.product.product_id }} - {{ item.product.status }}</td>
+    <td>{{ item.from_location.pk }}</td>
+    <td>{{ item.to_location.pk }}</td>
+    <td>{{ item.qty }}</td>
+    <td>
+        <a href="{% url 'edit_product_movement' item.movement_id %}" class="btn btn-primary btn-md" role="button">edit</a>
+    </td>
+</tr>  
+
+    {% endfor %}
+
+</tbody>
+</table>
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+

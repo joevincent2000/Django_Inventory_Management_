@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>{{ header }}</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Product Name</th>
+        <th>Total In</th>
+        <th>Total Out</th>
+        <th>Quantity</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in items %}
+        <tr>
+          <td>{{ item.product.procduct_id }}</td>
+          <td>{{ item.total_in }}</td>
+          <td>{{ item.total_out }}</td>
+          <td>{{ item.qty }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
